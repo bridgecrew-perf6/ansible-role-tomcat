@@ -1,13 +1,12 @@
 # ansible-role-tomcat
 Deploy instanciated tomcat
-At the Moment:
- * Only deploys CATALINA_HOME (lib/bin) under /opt/tomcat/apache-tomcat-{{ TOMCAT_VERSION }} 
- * installs Java (zypper only atm)
- * Makes test run 
+At the Moment it has tasks to:
+ * Download tar.gz & extract lib/bin (CATALINA_HOME) to /opt/tomcat/apache-tomcat-{{ TOMCAT_VERSION }} 
+ * Installs Java (zypper only atm)
+ * Test run 
 
 Need to do: 
  * Take Vars SOFTWARE (like xWiki), STAGE (QS/PROD) 
- * build instance CATALINA_BASE (lib,bin,conf, etc.) under  /opt/tomcat/xwiki-qs
- * install CATALINA_BASE lib,bin,conf,et. 
+ * build instance CATALINA_BASE (lib,bin,conf, etc.) under  /opt/tomcat/{{ SOFTWARE }}-{{ STAGE }}
  * deploy systemd UNIT File that sets CATALINA_HOME & CATALINA_BASE
 
