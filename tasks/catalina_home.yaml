@@ -1,0 +1,25 @@
+--- 
+- name: Create BASEDIR
+  file:
+    path: "{{ BASEDIR }}"
+    state: directory
+    owner: "{{ TOMCAT_USER }}"
+    group: "{{ TOMCAT_GROUP }}"
+
+- name: Download Tomcat
+  get_url:
+    url: "{{ TOMCAT_DWNLDURL }}"
+    dest: "/tmp/{{ TOMCAT_ARCHIVE }}"
+    checksum: "{{ TOMCAT_CHECKSUM }}"
+
+- name: Extract Files
+  shell: "tar -C {{ BASEDIR }} --wildcards -xvzf /tmp/{{ TOMCAT_ARCHIVE }} {{ TOMCAT_VERSION }}/bin/{*.xml,*.sh,*.jar}"
+  shell: "tar -C {{ BASEDIR }} --wildcards -xvzf /tmp/{{ TOMCAT_ARCHIVE }} {{ TOMCAT_VERSION }}/lib"
+  
+- name: Recursively change ownership of {{ TOMCAT_VERSION }}
+  file:
+    path: "{{ BASEDIR }}/{{ TOMCAT_VERSION }}"
+    state: directory
+    recurse: yes
+    owner: "{{ TOMCAT_USER }}"
+    group: "{{ TOMCAT_GROUP }}"

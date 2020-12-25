@@ -1,0 +1,5 @@
+---
+- name: Install openjdk
+  package:
+    name: java-11-openjdk-devel
+    state: present

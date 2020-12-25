@@ -1,0 +1,14 @@
+--- 
+- name: Ensure group "tomcat" exists 
+  group:
+    name: "{{ TOMCAT_GROUP }}"
+    state: present
+    gid: 200
+    
+- name: Ensure user "tomcat" exists
+  user:
+    name: "{{ TOMCAT_USER }}"
+    comment: Apache Tomcat
+    uid: 200
+    group: "{{ TOMCAT_GROUP }}"
+    state: present 

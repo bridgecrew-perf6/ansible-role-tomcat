@@ -1,0 +1,9 @@
+---
+- name: Install Tomcat CATALINA_HOME
+  block:
+    - import_tasks: tomcat_user.yaml
+    - import_tasks: catalina_home.yaml
+    - import_tasks: openjdk.yaml
+    
+
+
