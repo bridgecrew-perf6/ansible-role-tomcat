@@ -12,13 +12,15 @@
     dest: "/tmp/{{ TOMCAT_ARCHIVE }}"
     checksum: "{{ TOMCAT_CHECKSUM }}"
 
-- name: Extract Files
-  shell: "tar -C {{ BASEDIR }} --wildcards -xvzf /tmp/{{ TOMCAT_ARCHIVE }} {{ TOMCAT_VERSION }}/bin/{*.xml,*.sh,*.jar}"
-  shell: "tar -C {{ BASEDIR }} --wildcards -xvzf /tmp/{{ TOMCAT_ARCHIVE }} {{ TOMCAT_VERSION }}/lib"
+  
+- name: "Extract Files {{ CATALINA_BASEDIR }}/lib"  
+  shell: "tar -C {{ BASEDIR }} --wildcards -xvzf /tmp/{{ TOMCAT_ARCHIVE }} {{ CATALINA_BASEDIR }}/lib"
+- name: "Extract Files {{ CATALINA_BASEDIR }}/bin"
+  shell: "tar -C {{ BASEDIR }} --wildcards -xvzf /tmp/{{ TOMCAT_ARCHIVE }} {{ CATALINA_BASEDIR }}/bin/{*.xml,*.sh,*.jar}"
   
 - name: Recursively change ownership of {{ TOMCAT_VERSION }}
   file:
-    path: "{{ BASEDIR }}/{{ TOMCAT_VERSION }}"
+    path: "{{ CATALINA_HOME }}"
     state: directory
     recurse: yes
     owner: "{{ TOMCAT_USER }}"
