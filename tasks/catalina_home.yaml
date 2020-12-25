@@ -6,18 +6,20 @@
     owner: "{{ TOMCAT_USER }}"
     group: "{{ TOMCAT_GROUP }}"
 
-- name: Download Tomcat
-  get_url:
-    url: "{{ TOMCAT_DWNLDURL }}"
-    dest: "/tmp/{{ TOMCAT_ARCHIVE }}"
-    checksum: "{{ TOMCAT_CHECKSUM }}"
-
-  
 - name: "Extract Files {{ CATALINA_BASEDIR }}/lib"  
-  shell: "tar -C {{ BASEDIR }} --wildcards -xvzf /tmp/{{ TOMCAT_ARCHIVE }} {{ CATALINA_BASEDIR }}/lib"
-- name: "Extract Files {{ CATALINA_BASEDIR }}/bin"
-  shell: "tar -C {{ BASEDIR }} --wildcards -xvzf /tmp/{{ TOMCAT_ARCHIVE }} {{ CATALINA_BASEDIR }}/bin/{*.xml,*.sh,*.jar}"
-  
+  unarchive: 
+    src: "{{ TOMCAT_DWNLDURL }}"
+    remote_src: True
+    dest: /opt/tomcat
+    exclude:
+      - "*.bat"
+      - "*.gz"
+    extra_opts:
+    - "{{ CATALINA_BASEDIR }}/{{ item.dir }}"
+  with_items:
+    - dir: lib
+    - dir: bin
+
 - name: Recursively change ownership of {{ TOMCAT_VERSION }}
   file:
     path: "{{ CATALINA_HOME }}"
