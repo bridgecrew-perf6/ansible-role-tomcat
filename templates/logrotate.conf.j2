@@ -1,0 +1,12 @@
+/opt/tomcat/{{software_instance}}/logs/catalina.out
+/opt/tomcat/{{software_instance}}/logs/*.txt
+/opt/tomcat/{{software_instance}}/logs/*.log
+{
+rotate 5
+size 1024k
+compress
+notifempty
+missingok
+copytruncate
+su {{tomcat_user}} {{tomcat_group}}
+}

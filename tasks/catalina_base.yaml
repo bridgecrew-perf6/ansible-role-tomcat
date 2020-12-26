@@ -1,0 +1,25 @@
+---
+- name: Create catalina_base
+  file:
+    path: "{{item}}"
+    state: directory
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_group }}"
+  with_items:
+    - "{{catalina_base}}/conf/Catalina/localhost"
+    - "{{catalina_base}}/bin"
+    - "{{catalina_base}}/lib"
+    - "{{catalina_base}}/logs"
+    - "{{catalina_base}}/temp"
+    - "{{catalina_base}}/webapps"
+    
+- name: "Extract Files {{ catalina_basedir }}/lib"  
+  unarchive: 
+    src: "{{ tomcat_dwnldurl }}"
+    remote_src: True
+    dest: "{{catalina_base}}"
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_group }}"
+    extra_opts:
+    - "{{ catalina_basedir }}/conf"
+    - "--strip-components=1"

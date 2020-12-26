@@ -1,7 +1,7 @@
 ---
 
 - name: Test Catalina
-  shell: "java -cp {{CATALINA_HOME}}/lib/catalina.jar org.apache.catalina.util.ServerInfo"
+  shell: "java -cp {{catalina_home}}/lib/catalina.jar org.apache.catalina.util.ServerInfo"
   register: result
 
 - debug:

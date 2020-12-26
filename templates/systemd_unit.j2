@@ -1,0 +1,25 @@
+# Systemd unit file for tomcat
+[Unit]
+Description=Apache Tomcat Instance {{ software_instance }}
+After=network.target remote-fs.target
+
+[Service]
+UMask=0002
+Type=forking
+Environment=CATALINA_HOME={{catalina_home}}
+Environment=CATALINA_BASE={{catalina_base}}
+EnvironmentFile={{catalina_base}}/bin/setenv.sh
+User={{tomcat_user}}
+Group={{tomcat_group}}
+ExecStart={{catalina_home}}/bin/catalina.sh start
+ExecStop={{catalina_home}}/bin/catalina.sh stop
+ExecStopPost=-/bin/bash -c "rm -r {{catalina_base}}/temp/* 2>/dev/null"
+ExecStopPost=-/bin/bash -c "rm -r \$(ls -1d {{catalina_base}}/webapps/*/ 2>/dev/null) 2>/dev/null"
+StandardOutput=syslog
+SyslogIdentifier=%n
+SyslogFacility=daemon
+SuccessExitStatus=143
+TasksMax=1024
+
+[Install]
+WantedBy=multi-user.target 

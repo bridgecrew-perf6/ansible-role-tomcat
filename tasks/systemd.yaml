@@ -1,0 +1,11 @@
+---
+- name: Create systemd UNIT
+  template:
+    src: systemd_unit.j2
+    dest: "/usr/lib/systemd/system/{{software_instance}}.service"
+
+- name: "Enable {{software_instance}}.service"
+  systemd:
+    name: "{{software_instance}}.service"
+    enabled: yes
+    daemon_reload: yes
