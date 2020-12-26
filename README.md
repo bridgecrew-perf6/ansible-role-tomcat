@@ -17,8 +17,9 @@
 - [ ] Deploy WAR File in the created instance and smile :)
 - [ ] See if I can make it loop through multiple Instances or resort to multiple plays
  
-### Uses Vars software (like xWiki), stage (QS/PROD), tomcat_version, shutdown_port, http_port
- ```
+### Example Playbook 
+### Uses Vars software (xWiki), stage (dev/qs/prod), tomcat_version, shutdown_port, http_port
+```
 - name: Setup my Tomcat Xwiki Instance
   hosts: server
   gather_facts: yes
