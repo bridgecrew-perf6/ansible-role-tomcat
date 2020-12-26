@@ -13,13 +13,15 @@ At the Moment it has tasks to:
 - [x] deploy systemd UNIT File that sets catalina_home & catalina_base
  
 ToDo:
- * Create a role for xwiki or another application that uses Tomcat
- * Create tasks for creatiog of database and application configs
- * Deploy WAR File in the created instance and smile :)
- ---
+---
+- [x] Create a role for xwiki or another application that uses Tomcat
+- [x] Create tasks for creatiog of database and application configs
+- [x] Deploy WAR File in the created instance and smile :)
+
  
  Take Vars software (like xWiki), stage (QS/PROD), tomcat_version, shutdown_port, http_port
  ---
+ ```
 - name: Setup my Tomcat Xwiki Instance
   hosts: server
   gather_facts: yes
