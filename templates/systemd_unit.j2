@@ -9,12 +9,10 @@ Type=forking
 Environment=CATALINA_HOME={{catalina_home}}
 Environment=CATALINA_BASE={{catalina_base}}
 EnvironmentFile={{catalina_base}}/bin/setenv.sh
-User={{tomcat_user}}
-Group={{tomcat_group}}
+User={{software_instance}}
+Group={{software_instance}}
 ExecStart={{catalina_home}}/bin/catalina.sh start
 ExecStop={{catalina_home}}/bin/catalina.sh stop
-ExecStopPost=-/bin/bash -c "rm -r {{catalina_base}}/temp/* 2>/dev/null"
-ExecStopPost=-/bin/bash -c "rm -r \$(ls -1d {{catalina_base}}/webapps/*/ 2>/dev/null) 2>/dev/null"
 StandardOutput=syslog
 SyslogIdentifier=%n
 SyslogFacility=daemon

@@ -1,12 +1,15 @@
 ---
+### playbook variables
 tomcat_version: 9.0.41
-tomcat_dwnldurl: "https://downloads.apache.org/tomcat/tomcat-{{tomcat_version.split('.')[0] }}/v{{ tomcat_version  }}/bin/{{ tomcat_archive }}"
 tomcat_user: tomcat
 basedir: /opt/tomcat
-tomcat_group: "{{ tomcat_user }}"
+
+### derived variables
+tomcat_dwnldurl: "https://downloads.apache.org/tomcat/tomcat-{{tomcat_version.split('.')[0] }}/v{{tomcat_version }}/bin/{{ tomcat_archive }}"
+tomcat_group: "{{tomcat_user}}"
 tomcat_archive: "apache-tomcat-{{ tomcat_version }}.tar.gz"
-catalina_basedir: "{{ tomcat_archive.split('.tar')[0]  }}"
-catalina_home: "{{ basedir }}/{{ catalina_basedir }}"
-catalina_base: "{{ basedir }}/{{software}}-{{stage}}"
+catalina_version_dir: "{{ tomcat_archive.split('.tar')[0]  }}"
+catalina_home: "{{basedir}}/{{catalina_version_dir}}"
+catalina_base: "{{basedir}}/{{software}}-{{stage}}"
 software_instance: "tomcat-{{software}}-{{stage}}"
 

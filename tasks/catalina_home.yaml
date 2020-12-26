@@ -1,29 +1,29 @@
 --- 
 - name: Create basedir
   file:
-    path: "{{ basedir }}"
+    path: "{{basedir}}"
     state: directory
-    owner: "{{ tomcat_user }}"
-    group: "{{ tomcat_group }}"
+    owner: "{{tomcat_user}}"
+    group: "{{tomcat_group}}"
 
-- name: "Extract Files {{ catalina_basedir }}/lib"  
+- name: "Extract Files {{catalina_version_dir}}/"  
   unarchive: 
-    src: "{{ tomcat_dwnldurl }}"
+    src: "{{tomcat_dwnldurl}}"
     remote_src: True
     dest: /opt/tomcat
     exclude:
       - "*.bat"
       - "*.gz"
     extra_opts:
-    - "{{ catalina_basedir }}/{{ item.dir }}"
+    - "{{catalina_version_dir}}/{{item.dir}}"
   with_items:
     - dir: lib
     - dir: bin
 
 - name: Recursively change ownership of {{ tomcat_version }}
   file:
-    path: "{{ catalina_home }}"
+    path: "{{catalina_home}}"
     state: directory
     recurse: yes
-    owner: "{{ tomcat_user }}"
-    group: "{{ tomcat_group }}"
+    owner: "{{tomcat_user}}"
+    group: "{{tomcat_group}}"

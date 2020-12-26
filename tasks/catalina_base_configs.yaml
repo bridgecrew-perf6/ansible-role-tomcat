@@ -3,8 +3,8 @@
   template:
     src: "{{item.src}}"
     dest: "{{item.dest}}"
-    owner: "{{ tomcat_user }}"
-    group: "{{ tomcat_group }}"
+    owner: "{{software_instance}}"
+    group: "{{software_instance}}"
     mode: '0644'
   with_items:
     - src: setenv.sh.j2

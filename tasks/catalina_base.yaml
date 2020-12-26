@@ -3,8 +3,8 @@
   file:
     path: "{{item}}"
     state: directory
-    owner: "{{ tomcat_user }}"
-    group: "{{ tomcat_group }}"
+    owner: "{{software_instance}}"
+    group: "{{software_instance}}"
   with_items:
     - "{{catalina_base}}/conf/Catalina/localhost"
     - "{{catalina_base}}/bin"
@@ -13,13 +13,13 @@
     - "{{catalina_base}}/temp"
     - "{{catalina_base}}/webapps"
     
-- name: "Extract Files {{ catalina_basedir }}/lib"  
+- name: "Extract Files {{catalina_base}}/conf"  
   unarchive: 
     src: "{{ tomcat_dwnldurl }}"
     remote_src: True
     dest: "{{catalina_base}}"
-    owner: "{{ tomcat_user }}"
-    group: "{{ tomcat_group }}"
+    owner: "{{software_instance}}"
+    group: "{{software_instance}}"
     extra_opts:
-    - "{{ catalina_basedir }}/conf"
+    - "{{catalina_version_dir}}/conf"
     - "--strip-components=1"
