@@ -19,7 +19,6 @@
 ```
 ### Example Playbook 
 ```
----
 - name: Setup my xwiki
   hosts: server
   gather_facts: yes
