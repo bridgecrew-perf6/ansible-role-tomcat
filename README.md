@@ -1,5 +1,6 @@
 # ansible-role-tomcat
-Deploy instanciated tomcat
+Deploy instanciated tomcat.
+
 At the Moment it has tasks to:
  * Download tar.gz & extract lib/bin (catalina_home) to /opt/tomcat/apache-tomcat-{{tomcat_version}} 
  * Installs Java (zypper only atm)
