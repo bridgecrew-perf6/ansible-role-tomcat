@@ -17,6 +17,7 @@ ToDo:
 - [ ] Create a role for xwiki or another application that uses Tomcat
 - [ ] Create tasks for creatiog of database and application configs
 - [ ] Deploy WAR File in the created instance and smile :)
+- [ ] See if I can make it loop through multiple Instances or resort to multiple plays
  
  Uses Vars software (like xWiki), stage (QS/PROD), tomcat_version, shutdown_port, http_port
  
