@@ -17,9 +17,8 @@ ToDo:
 - [ ] Create a role for xwiki or another application that uses Tomcat
 - [ ] Create tasks for creatiog of database and application configs
 - [ ] Deploy WAR File in the created instance and smile :)
-
  
- Take Vars software (like xWiki), stage (QS/PROD), tomcat_version, shutdown_port, http_port
+ Uses Vars software (like xWiki), stage (QS/PROD), tomcat_version, shutdown_port, http_port
  
  ```
 - name: Setup my Tomcat Xwiki Instance
