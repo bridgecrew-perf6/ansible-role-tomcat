@@ -4,12 +4,12 @@ Deploy instanciated tomcat.
 ---
 
 At the Moment it has tasks to:
- * Download tar.gz & extract lib/bin (catalina_home) to /opt/tomcat/apache-tomcat-{{tomcat_version}} 
- * Installs Java (zypper only atm)
- * Test run catalina.jar 
- * Create instance catalina_base (lib,bin,conf, etc.) under  /opt/tomcat/{{software}}-{{stage}}
- * Create configs seten.sh, server.xml, logging.properties, logrotate.conf
- * deploy systemd UNIT File that sets catalina_home & catalina_base
+ -[x] Download tar.gz & extract lib/bin (catalina_home) to /opt/tomcat/apache-tomcat-{{tomcat_version}} 
+ -[x] Installs Java (zypper only atm)
+ -[x] Test run catalina.jar 
+ -[x] Create instance catalina_base (lib,bin,conf, etc.) under  /opt/tomcat/{{software}}-{{stage}}
+ -[x] Create configs seten.sh, server.xml, logging.properties, logrotate.conf
+ -[x] deploy systemd UNIT File that sets catalina_home & catalina_base
  
 ToDo:
  * Create a role for xwiki or another application that uses Tomcat
