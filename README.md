@@ -29,6 +29,3 @@
     http_port: 8080
   roles:
     - role: ansible-role-tomcat
-
-
- 
