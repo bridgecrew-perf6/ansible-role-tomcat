@@ -17,8 +17,7 @@
 ### Example Playbook 
 ### Uses Vars software (xWiki), stage (dev/qs/prod), tomcat_version, shutdown_port, http_port
 ```
-### Example Playbook 
-```
+---
 - name: Setup my xwiki
   hosts: server
   gather_facts: yes
