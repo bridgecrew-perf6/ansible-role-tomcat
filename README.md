@@ -1,5 +1,7 @@
 # ansible-role-tomcat
+---
 Deploy instanciated tomcat.
+---
 
 At the Moment it has tasks to:
  * Download tar.gz & extract lib/bin (catalina_home) to /opt/tomcat/apache-tomcat-{{tomcat_version}} 
@@ -13,6 +15,7 @@ ToDo:
  * Create a role for xwiki or another application that uses Tomcat
  * Create tasks for creatiog of database and application configs
  * Deploy WAR File in the created instance and smile :)
+ ---
  
  Take Vars software (like xWiki), stage (QS/PROD), tomcat_version, shutdown_port, http_port
  ---
