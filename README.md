@@ -1,10 +1,9 @@
 # ansible-role-tomcat
----
-Deploy instanciated tomcat.
----
 
-At the Moment it has tasks to:
----
+## Deploy instanciated tomcat.
+
+
+### At the Moment it has tasks to:
 - [x] Download tar.gz & extract lib/bin (catalina_home) to /opt/tomcat/apache-tomcat-{{tomcat_version}} 
 - [x] Installs Java (zypper only atm)
 - [x] Test run catalina.jar 
@@ -12,15 +11,13 @@ At the Moment it has tasks to:
 - [x] Create configs seten.sh, server.xml, logging.properties, logrotate.conf
 - [x] deploy systemd UNIT File that sets catalina_home & catalina_base
  
-ToDo:
----
+### ToDo:
 - [ ] Create a role for xwiki or another application that uses Tomcat
 - [ ] Create tasks for creatiog of database and application configs
 - [ ] Deploy WAR File in the created instance and smile :)
 - [ ] See if I can make it loop through multiple Instances or resort to multiple plays
  
- Uses Vars software (like xWiki), stage (QS/PROD), tomcat_version, shutdown_port, http_port
- 
+### Uses Vars software (like xWiki), stage (QS/PROD), tomcat_version, shutdown_port, http_port
  ```
 - name: Setup my Tomcat Xwiki Instance
   hosts: server
