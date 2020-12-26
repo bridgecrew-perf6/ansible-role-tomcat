@@ -6,7 +6,7 @@
     owner: "{{tomcat_user}}"
     group: "{{tomcat_group}}"
 
-- name: "Extract Files {{catalina_version_dir}}/"  
+- name: "Extract Files {{catalina_home}}/"  
   unarchive: 
     src: "{{tomcat_dwnldurl}}"
     remote_src: True
@@ -16,6 +16,7 @@
       - "*.gz"
     extra_opts:
     - "{{catalina_version_dir}}/{{item.dir}}"
+    creates: "{{catalina_home}}/bin"
   with_items:
     - dir: lib
     - dir: bin

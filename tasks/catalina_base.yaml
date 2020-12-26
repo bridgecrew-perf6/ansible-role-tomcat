@@ -1,18 +1,24 @@
 ---
+- name: Check if catalina_base needs be created
+  stat: 
+    path: "{{catalina_base}}/conf/Catalina/localhost"
+  register: catalina_base_dir
+  
 - name: Create catalina_base
   file:
     path: "{{item}}"
     state: directory
     owner: "{{software_instance}}"
     group: "{{software_instance}}"
-  with_items:
+  with_items: 
     - "{{catalina_base}}/conf/Catalina/localhost"
     - "{{catalina_base}}/bin"
     - "{{catalina_base}}/lib"
     - "{{catalina_base}}/logs"
     - "{{catalina_base}}/temp"
     - "{{catalina_base}}/webapps"
-    
+  when: catalina_base_dir.stat.exists == False
+
 - name: "Extract Files {{catalina_base}}/conf"  
   unarchive: 
     src: "{{ tomcat_dwnldurl }}"
@@ -20,6 +26,7 @@
     dest: "{{catalina_base}}"
     owner: "{{software_instance}}"
     group: "{{software_instance}}"
-    extra_opts:
+    creates: "{{catalina_base}}/conf/server.xml"
+    extra_opts: 
     - "{{catalina_version_dir}}/conf"
     - "--strip-components=1"
