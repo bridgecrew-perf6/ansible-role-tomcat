@@ -10,6 +10,7 @@ tomcat_group: "{{tomcat_user}}"
 tomcat_archive: "apache-tomcat-{{ tomcat_version }}.tar.gz"
 catalina_version_dir: "{{ tomcat_archive.split('.tar')[0]  }}"
 catalina_home: "{{basedir}}/{{catalina_version_dir}}"
-catalina_base: "{{basedir}}/{{software}}-{{stage}}"
 software_instance: "tomcat-{{software}}-{{stage}}"
+catalina_base: "{{basedir}}/{{software_instance}}"
+
 
