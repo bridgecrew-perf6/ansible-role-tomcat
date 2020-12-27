@@ -1,5 +1,5 @@
 ---
 - name: Install openjdk
   package:
-    name: java-11-openjdk-devel
+    name: "{{openjdk_package_name}}"
     state: present
