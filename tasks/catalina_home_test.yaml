@@ -1,8 +1,10 @@
 ---
-
 - name: Test Catalina
   shell: "java -cp {{catalina_home}}/lib/catalina.jar org.apache.catalina.util.ServerInfo"
-  register: result
+  register: test_catalina_result
+  changed_when: test_catalina_result.stdout_lines is not search('Apache Tomcat')
 
 - debug:
-    var: result.stdout_lines
+    msg: 
+      - "{{test_catalina_result.stdout_lines[0]}} / {{test_catalina_result.stdout_lines[6]}}"
+
