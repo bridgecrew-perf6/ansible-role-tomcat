@@ -3,7 +3,7 @@
 ### Deploy instanciated tomcat.
 ### At the Moment it has tasks to:
 - [x] Download tar.gz & extract lib/bin (catalina_home) to /opt/tomcat/apache-tomcat-{{tomcat_version}} 
-- [x] Installs Java (zypper only atm)
+- [x] Installs Java
 - [x] Test run catalina.jar, output Tomcat and Java version
 - [x] Create instance catalina_base (lib,bin,conf, etc.) under  /opt/tomcat/{{software}}-{{stage}}
 - [x] Create configs setenv.sh, server.xml, logging.properties, logrotate.conf from templates
