@@ -1,6 +1,7 @@
 # ansible-role-tomcat
 
 ### Deploy instanciated tomcat.
+Can be tried with pragmatiker/ansible-role-xwiki for fun
 ### At the Moment it has tasks to:
 - [x] Download tar.gz & extract lib/bin (catalina_home) to /opt/tomcat/apache-tomcat-{{tomcat_version}} 
 - [x] Installs Java
@@ -10,8 +11,6 @@
 - [x] Create & enable systemd service unit
  
 ### ToDo:
-- [ ] Create a role for xwiki or another application that uses Tomcat
-- [ ] Deploy WAR File in the created instance and smile :)
 - [ ] See if I can make it loop through multiple Instances or resort to multiple plays
  
 ### Example Playbook 
