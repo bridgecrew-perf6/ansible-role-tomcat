@@ -3,6 +3,10 @@
 tomcat_version: 9.0.41
 tomcat_user: tomcat
 basedir: /opt/tomcat
+software: default
+stage: dev
+shutdown_port: 8005
+http_port: 8080
 
 ### derived variables
 tomcat_dwnldurl: "https://downloads.apache.org/tomcat/tomcat-{{tomcat_version.split('.')[0] }}/v{{tomcat_version }}/bin/{{ tomcat_archive }}"
