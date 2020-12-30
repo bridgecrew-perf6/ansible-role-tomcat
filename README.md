@@ -9,9 +9,11 @@ Can be tried with pragmatiker/ansible-role-xwiki for fun
 - [x] Create instance catalina_base (lib,bin,conf, etc.) under  /opt/tomcat/{{software}}-{{stage}}
 - [x] Create configs setenv.sh, server.xml, logging.properties, logrotate.conf from templates
 - [x] Create & enable systemd service unit
+- [x] See if I can make it loop through multiple Instances or resort to multiple plays
  
 ### ToDo:
-- [ ] See if I can make it loop through multiple Instances or resort to multiple plays
+- [ ] eat cookies
+
 
 ### Example group_vars
 ```
@@ -55,14 +57,5 @@ tomcat_instances:
       when: ansible_os_family == 'Debian'
     - name: Ensure unip is installed
       package: name=unzip state=present
-  vars:
-    basedir: /opt/tomcat
-    software: xwiki
-    stage: qs
-    tomcat_version: 8.5.61
-    xwiki_version: 11.10.12
-    shutdown_port: 8005
-    http_port: 8080
   roles:
     - role: ansible-role-tomcat
-    - role: ansible-role-xwiki
