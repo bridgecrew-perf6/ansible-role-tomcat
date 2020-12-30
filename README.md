@@ -1,18 +1,19 @@
 # ansible-role-tomcat
 
-### Deploy instanciated tomcat.
-Can be tried with pragmatiker/ansible-role-xwiki for fun
+### Deploy instanciated tomcat from group_vars
+Has shared CATALINA_HOME for all instances
+
 ### At the Moment it has tasks to:
 - [x] Download tar.gz & extract lib/bin (catalina_home) to /opt/tomcat/apache-tomcat-{{tomcat_version}} 
 - [x] Installs Java
 - [x] Test run catalina.jar, output Tomcat and Java version
-- [x] Create instance catalina_base (lib,bin,conf, etc.) under  /opt/tomcat/{{software}}-{{stage}}
+- [x] Create instance catalina_base (lib,bin,conf, etc.) under  /opt/tomcat/tomcat-{{software}}-{{instance}}-{{stage}}
 - [x] Create configs setenv.sh, server.xml, logging.properties, logrotate.conf from templates
 - [x] Create & enable systemd service unit
 - [x] See if I can make it loop through multiple Instances or resort to multiple plays
  
 ### ToDo:
-- [ ] eat cookies
+- [ ] build a role for xwiki as company :)
 
 
 ### Example group_vars
