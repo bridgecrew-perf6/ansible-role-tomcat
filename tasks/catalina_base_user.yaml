@@ -1,14 +1,14 @@
 --- 
-- name: "Ensure group {{software_instance}} exists"
+- name: "Ensure group {{tomcat_instance}} exists"
   group:
-    name: "{{software_instance}}"
+    name: "{{tomcat_instance}}"
     state: present
     
-- name: "Ensure user {{software_instance}} exists"
+- name: "Ensure user {{tomcat_instance}} exists"
   user:
-    name: "{{software_instance}}"
-    comment: "{{software_instance}} User"
-    group: "{{software_instance}}"
+    name: "{{tomcat_instance}}"
+    comment: "{{tomcat_instance}} User"
+    group: "{{tomcat_instance}}"
     groups: "{{tomcat_group}}"
     state: present 
  

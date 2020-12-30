@@ -6,10 +6,10 @@
   
 - name: Create catalina_base
   file:
-    path: "{{item}}"
+    path: "{{directories}}"
     state: directory
-    owner: "{{software_instance}}"
-    group: "{{software_instance}}"
+    owner: "{{tomcat_instance}}"
+    group: "{{tomcat_instance}}"
   with_items: 
     - "{{catalina_base}}/conf/Catalina/localhost"
     - "{{catalina_base}}/bin"
@@ -18,14 +18,17 @@
     - "{{catalina_base}}/temp"
     - "{{catalina_base}}/webapps"
   when: catalina_base_dir.stat.exists == False
+  loop_control:
+    loop_var: directories
+    label: "{{directories}}"
 
 - name: "Extract Files {{catalina_base}}/conf"  
   unarchive: 
     src: "{{ tomcat_dwnldurl }}"
     remote_src: True
     dest: "{{catalina_base}}"
-    owner: "{{software_instance}}"
-    group: "{{software_instance}}"
+    owner: "{{tomcat_instance}}"
+    group: "{{tomcat_instance}}"
     creates: "{{catalina_base}}/conf/server.xml"
     extra_opts: 
     - "{{catalina_version_dir}}/conf"

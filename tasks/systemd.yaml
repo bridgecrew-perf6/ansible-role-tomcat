@@ -2,10 +2,10 @@
 - name: Create systemd UNIT
   template:
     src: systemd_unit.j2
-    dest: "/usr/lib/systemd/system/{{software_instance}}.service"
+    dest: "/usr/lib/systemd/system/{{tomcat_instance}}.service"
 
-- name: "Enable {{software_instance}}.service"
+- name: "Enable {{tomcat_instance}}.service"
   systemd:
-    name: "{{software_instance}}.service"
+    name: "{{tomcat_instance}}.service"
     enabled: yes
     daemon_reload: yes

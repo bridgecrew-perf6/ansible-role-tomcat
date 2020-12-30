@@ -1,10 +1,10 @@
 ---
 - name: Create config files
   template:
-    src: "{{item.src}}"
-    dest: "{{item.dest}}"
-    owner: "{{software_instance}}"
-    group: "{{software_instance}}"
+    src: "{{config.src}}"
+    dest: "{{config.dest}}"
+    owner: "{{tomcat_instance}}"
+    group: "{{tomcat_instance}}"
     mode: '0644'
   with_items:
     - src: setenv.sh.j2
@@ -14,4 +14,7 @@
     - src: logging.properties.j2
       dest: "{{catalina_base}}/conf/logging.properties"
     - src: logrotate.conf.j2
-      dest: "/etc/logrotate.d/{{software_instance}}.conf"
+      dest: "/etc/logrotate.d/{{tomcat_instance}}.conf"
+  loop_control:
+    loop_var: config
+    label: "{{config.dest}}"

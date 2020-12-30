@@ -3,8 +3,9 @@
 tomcat_version: 9.0.41
 tomcat_user: tomcat
 basedir: /opt/tomcat
-software: default
 stage: dev
+instance: youpr0n
+software: malware
 shutdown_port: 8005
 http_port: 8080
 
@@ -14,7 +15,7 @@ tomcat_group: "{{tomcat_user}}"
 tomcat_archive: "apache-tomcat-{{ tomcat_version }}.tar.gz"
 catalina_version_dir: "{{ tomcat_archive.split('.tar')[0]  }}"
 catalina_home: "{{basedir}}/{{catalina_version_dir}}"
-software_instance: "tomcat-{{software}}-{{stage}}"
-catalina_base: "{{basedir}}/{{software_instance}}"
+tomcat_instance: "tomcat-{{software | default(software)}}-{{item.instance | default(instance)}}-{{item.stage | default(stage)}}"
+catalina_base: "{{basedir}}/{{tomcat_instance}}"
 
 

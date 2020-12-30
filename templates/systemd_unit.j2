@@ -1,6 +1,6 @@
 # Systemd unit file for tomcat
 [Unit]
-Description=Apache Tomcat Instance {{ software_instance }}
+Description=Apache Tomcat Instance {{ tomcat_instance }}
 After=network.target remote-fs.target
 
 [Service]
@@ -9,8 +9,8 @@ Type=forking
 Environment=CATALINA_HOME={{catalina_home}}
 Environment=CATALINA_BASE={{catalina_base}}
 EnvironmentFile={{catalina_base}}/bin/setenv.sh
-User={{software_instance}}
-Group={{software_instance}}
+User={{tomcat_instance}}
+Group={{tomcat_instance}}
 ExecStart={{catalina_home}}/bin/catalina.sh start
 ExecStop={{catalina_home}}/bin/catalina.sh stop
 StandardOutput=syslog

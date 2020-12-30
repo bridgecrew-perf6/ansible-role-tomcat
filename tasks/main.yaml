@@ -19,17 +19,21 @@
     - import_tasks: catalina_home_test.yaml
       tags: tomcat_catalina_home_test
       
-    - import_tasks: catalina_base_user.yaml
+    - include_tasks: catalina_base_user.yaml
       tags: tomcat_catalina_base_user
+      with_items: "{{tomcat_instances}}"
       
-    - import_tasks: catalina_base.yaml
+    - include_tasks: catalina_base.yaml
       tags: tomcat_catalina_base
+      with_items: "{{tomcat_instances}}"
       
-    - import_tasks: catalina_base_configs.yaml
+    - include_tasks: catalina_base_configs.yaml
       tags: tomcat_catalina_base_configs
+      with_items: "{{tomcat_instances}}"
       
-    - import_tasks: systemd.yaml
+    - include_tasks: systemd.yaml
       tags: tomcat_systemd
+      with_items: "{{tomcat_instances}}"
       
       
     
