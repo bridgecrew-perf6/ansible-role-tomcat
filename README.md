@@ -28,21 +28,17 @@ tomcat_instances:
   - instance: acme
     http_port: 8080
     shutdown_port: 8005
-    db_passwd: CTS9K4XKfO
     stage: dev
   - instance: umbrellacorp
     http_port: 9080
     shutdown_port: 9005
-    db_passwd: a08tg6zz81
     stage: viral
   - instance: starkindustries
     http_port: 10080
     shutdown_port: 10005
-    db_passwd: E4G144kL6t
   - instance: nebula
     http_port: 11080
     shutdown_port: 11005
-    db_passwd: I80BuBXzh6
  ```
  
 ### Example Playbook 
