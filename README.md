@@ -12,12 +12,41 @@ Can be tried with pragmatiker/ansible-role-xwiki for fun
  
 ### ToDo:
 - [ ] See if I can make it loop through multiple Instances or resort to multiple plays
+
+### Example group_vars
+```
+---
+basedir: /opt/tomcat
+software: xwiki
+xwiki_version: 11.10.12
+stage: qs
+tomcat_version: 8.5.61
+tomcat_instances:
+  - instance: acme
+    http_port: 8080
+    shutdown_port: 8005
+    db_passwd: CTS9K4XKfO
+    stage: dev
+  - instance: umbrellacorp
+    http_port: 9080
+    shutdown_port: 9005
+    db_passwd: a08tg6zz81
+    stage: viral
+  - instance: starkindustries
+    http_port: 10080
+    shutdown_port: 10005
+    db_passwd: E4G144kL6t
+  - instance: nebula
+    http_port: 11080
+    shutdown_port: 11005
+    db_passwd: I80BuBXzh6
+ ```
  
 ### Example Playbook 
 ```
 ---
 - name: Setup my xwiki
-  hosts: server
+  hosts: xwiki_qs
   gather_facts: yes
   become: yes
   pre_tasks:
