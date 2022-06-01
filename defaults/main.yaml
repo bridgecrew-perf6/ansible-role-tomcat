@@ -1,6 +1,6 @@
 ---
 ### playbook variables
-tomcat_version: 9.0.41
+tomcat_version: 9.0.63
 tomcat_user: tomcat
 basedir: /opt/tomcat
 stage: dev
