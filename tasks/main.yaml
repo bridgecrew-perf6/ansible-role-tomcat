@@ -1,6 +1,5 @@
 ---
 - name: Load Variable files
-  include_vars: "{{item}}"
   with_first_found:
     - "../vars/{{ansible_os_family}}.yaml"
     - "../vars/default.yaml"
@@ -21,21 +20,24 @@
       
     - include_tasks: catalina_base_user.yaml
       tags: tomcat_catalina_base_user
-      with_items: "{{instances}}"
-      
+      loop: "{{ instances }}"
+      loop_control:
+        label: "{{ item.instance }}"
+
     - include_tasks: catalina_base.yaml
       tags: tomcat_catalina_base
-      with_items: "{{instances}}"
+      loop: "{{ instances }}"
+      loop_control:
+        label: "{{ item.instance }}"
       
     - include_tasks: catalina_base_configs.yaml
       tags: tomcat_catalina_base_configs
-      with_items: "{{instances}}"
+      loop: "{{ instances }}"
+      loop_control:
+        label: "{{ item.instance }}"
       
     - include_tasks: systemd.yaml
       tags: tomcat_systemd
-      with_items: "{{instances}}"
-      
-      
-    
-
-
+      loop: "{{ instances }}"
+      loop_control:
+        label: "{{ item.instance }}"
