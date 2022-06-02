@@ -21,19 +21,19 @@
       
     - include_tasks: catalina_base_user.yaml
       tags: tomcat_catalina_base_user
-      with_items: "{{tomcat_instances}}"
+      with_items: "{{instances}}"
       
     - include_tasks: catalina_base.yaml
       tags: tomcat_catalina_base
-      with_items: "{{tomcat_instances}}"
+      with_items: "{{instances}}"
       
     - include_tasks: catalina_base_configs.yaml
       tags: tomcat_catalina_base_configs
-      with_items: "{{tomcat_instances}}"
+      with_items: "{{instances}}"
       
     - include_tasks: systemd.yaml
       tags: tomcat_systemd
-      with_items: "{{tomcat_instances}}"
+      with_items: "{{instances}}"
       
       
     
