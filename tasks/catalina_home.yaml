@@ -11,7 +11,7 @@
     src: "{{tomcat_dwnldurl}}"
     remote_src: True
     dest: /opt/tomcat
-    exclude:with_items:
+    exclude:
       - "*.bat"
       - "*.gz"
     extra_opts:
