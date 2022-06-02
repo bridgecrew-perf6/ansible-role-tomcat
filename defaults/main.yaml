@@ -2,7 +2,7 @@
 ### playbook variables
 tomcat_version: 9.0.63
 tomcat_user: tomcat
-basedir: /opt/tomcat
+tomcat_basedir: /opt/tomcat
 stage: dev
 instance: youpr0n
 software: malware
@@ -14,8 +14,6 @@ tomcat_dwnldurl: "https://downloads.apache.org/tomcat/tomcat-{{tomcat_version.sp
 tomcat_group: "{{tomcat_user}}"
 tomcat_archive: "apache-tomcat-{{ tomcat_version }}.tar.gz"
 catalina_version_dir: "{{ tomcat_archive.split('.tar')[0]  }}"
-catalina_home: "{{basedir}}/{{catalina_version_dir}}"
+catalina_home: "{{tomcat_basedir}}/{{catalina_version_dir}}"
 tomcat_instance: "tomcat-{{software | default(software)}}-{{item.instance | default(instance)}}-{{item.stage | default(stage)}}"
-catalina_base: "{{basedir}}/{{tomcat_instance}}"
-
-
+catalina_base: "{{tomcat_basedir}}/{{tomcat_instance}}"
