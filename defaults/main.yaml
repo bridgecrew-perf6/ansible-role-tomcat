@@ -2,7 +2,7 @@
 ### playbook variables
 tomcat_version: 9.0.63
 tomcat_user: tomcat
-tomcat_basedir: /opt/tomcat
+tomcat_basedir: "{{basedir | default('/opt/pisscat')}}"
 stage: dev
 instance: youpr0n
 software: malware
