@@ -1,14 +1,15 @@
 ---
-- name: Load Variable files
+- name: "Load Variable files"
+  include_vars: "{{ item }}"
   with_first_found:
     - "../vars/{{ansible_os_family}}.yaml"
     - "../vars/default.yaml"
 
-- name: Install Tomcat catalina_home
+- name: just do
   block:
     - import_tasks: catalina_home_user.yaml
       tags: tomcat_catalina_home_user
-      
+
     - import_tasks: catalina_home.yaml
       tags: tomcat_catalina_home
       
