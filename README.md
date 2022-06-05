@@ -26,19 +26,19 @@ stage: qs
 tomcat_version: 8.5.61
 tomcat_instances:
   - instance: acme
-    http_port: 8080
-    shutdown_port: 8005
+    tomcat_http_port: 8080
+    tomcat_shutdown_port: 8005
     stage: dev
   - instance: umbrellacorp
-    http_port: 9080
-    shutdown_port: 9005
+    tomcat_http_port: 9080
+    tomcat_shutdown_port: 9005
     stage: viral
   - instance: starkindustries
-    http_port: 10080
-    shutdown_port: 10005
+    tomcat_http_port: 10080
+    tomcat_shutdown_port: 10005
   - instance: nebula
-    http_port: 11080
-    shutdown_port: 11005
+    tomcat_http_port: 11080
+    tomcat_shutdown_port: 11005
  ```
  
 ### Example Playbook 

@@ -1,19 +1,14 @@
 ---
-### playbook variables
+### Variables
 tomcat_version: 9.0.63
-tomcat_user: tomcat
 tomcat_basedir: "{{basedir | default('/opt/tomcat')}}"
-stage: dev
-instance: youpr0n
-software: malware
-shutdown_port: 8005
-http_port: 8080
-
-### derived variables
-tomcat_dwnldurl: "https://downloads.apache.org/tomcat/tomcat-{{tomcat_version.split('.')[0] }}/v{{tomcat_version }}/bin/{{ tomcat_archive }}"
+tomcat_user: tomcat
 tomcat_group: "{{tomcat_user}}"
+tomcat_dwnldurl: "https://downloads.apache.org/tomcat/tomcat-{{tomcat_version.split('.')[0] }}/v{{tomcat_version }}/bin/{{ tomcat_archive }}"
 tomcat_archive: "apache-tomcat-{{ tomcat_version }}.tar.gz"
 catalina_version_dir: "{{ tomcat_archive.split('.tar')[0]  }}"
 catalina_home: "{{tomcat_basedir}}/{{catalina_version_dir}}"
-tomcat_instance: "tomcat-{{software | default(software)}}-{{item.instance | default(instance)}}-{{item.stage | default(stage)}}"
+tomcat_instance: "tomcat-{{item.software | default(software)}}-{{item.instance}}-{{item.stage | default(stage)}}"
 catalina_base: "{{tomcat_basedir}}/{{tomcat_instance}}"
+tomcat_shutdown_port: "{{item.tomcat_shutdown_port}}"
+tomcat_http_port: "{{item.tomcat_http_port}}"
